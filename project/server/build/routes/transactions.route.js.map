@@ -1,1 +1,0 @@
-{"version":3,"file":"transactions.route.js","sourceRoot":"","sources":["../../src/routes/transactions.route.ts"],"names":[],"mappings":";;;;;AAAA,mCAAiC;AACjC,mGAA4E;AAE5E,IAAM,kBAAkB,GAAG,IAAA,gBAAM,GAAE,CAAC;AAEpC,kBAAkB,CAAC,GAAG,CACpB,GAAG,EACH,iCAAsB,CAAC,KAAK,CAAC,IAAI,CAAC,iCAAsB,CAAC,CAC1D,CAAC;AAEF,kBAAe,kBAAkB,CAAC"}
