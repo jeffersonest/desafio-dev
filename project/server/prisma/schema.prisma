@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Stores {
+  id           Int            @id @default(autoincrement())
+  store_owner  String         @db.VarChar(14)
+  store_name   String         @db.VarChar(19)
+  transactions Transactions[]
+}
+
+model Transactions {
+  id       Int     @id @default(autoincrement())
+  date     String  @db.VarChar(8)
+  value    Decimal @db.Decimal(10, 2)
+  cpf      String  @db.VarChar(11)
+  card     String  @db.VarChar(12)
+  hour     String  @db.VarChar(6)
+  store    Stores  @relation(fields: [store_id], references: [id])
+  type     T_Types @relation(fields: [type_id], references: [id])
+  store_id Int
+  type_id  Int
+}
+
+enum Origin {
+  Entrada
+  Saida
+}
+
+enum Signal {
+  Add
+  Remove
+}
+
+model T_Types {
+  id           Int            @id @default(autoincrement())
+  type         Int
+  description  String         @db.VarChar(100)
+  origin       Origin
+  signal       Signal
+  Transactions Transactions[]
+}
