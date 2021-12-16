@@ -13,6 +13,6 @@
     "forceConsistentCasingInFileNames": true,
     "lib": ["esnext"],
   },
-  "include": ["src/**/*", "interfaces"],
+  "include": ["src/**/*", "interfaces", "jest.config.js"],
   "exclude": ["node_modules", "**/*.test.ts"]
 }

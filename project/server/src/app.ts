@@ -1,3 +1,7 @@
-import Server from "./Server";
+import * as dotenv from "dotenv";
+dotenv.config();
 
-Server.listen(3000, () => console.log(`Running on ${3000}`));
+import Server from "./Server";
+const PORT = process.env.PORT;
+
+Server.listen(PORT, () => console.log(`Running on ${PORT}`));

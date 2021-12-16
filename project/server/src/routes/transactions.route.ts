@@ -1,10 +1,12 @@
 import { Router } from "express";
-import TransactionsController from "../controllers/Transactions.controller";
+import TransactionsController from "../controllers/transactions.controller";
+import authMiddleware from "../middlewares/auth.middleware";
 
 const TransactionsRoutes = Router();
 
-TransactionsRoutes.get(
+TransactionsRoutes.post(
   "/",
+  authMiddleware.checkToken,
   TransactionsController.index.bind(TransactionsController)
 );
 
