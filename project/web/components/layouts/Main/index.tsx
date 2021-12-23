@@ -21,11 +21,10 @@ const Main: React.FC = ({ children }: mainTypes) => {
         } else {
           router.push("/");
         }
-        setInit(true);
       }
     }
-
     checkToken();
+    setInit(true);
   }, [getLocalUser, router, setUser, init]);
 
   return <section className="main">{children}</section>;

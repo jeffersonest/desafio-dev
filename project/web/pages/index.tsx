@@ -5,11 +5,8 @@ import GoogleButton from "react-google-button";
 import { useAuth } from "../contexts/auth.context";
 
 const Home: NextPage = () => {
-  const { auth, logout, getLocalUser } = useAuth();
+  const { auth } = useAuth();
 
-  function LogOut() {
-    logout();
-  }
   function Auth() {
     auth();
   }

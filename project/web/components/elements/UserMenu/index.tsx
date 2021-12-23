@@ -8,7 +8,6 @@ const UserMenu: React.FC = () => {
   const menu = useRef(null);
 
   const handleMenu = () => {
-    console.log(user.idToken);
     setOpen(!open);
   };
 

@@ -7,8 +7,6 @@ class FirebaseProvider {
         `https://oauth2.googleapis.com/tokeninfo?id_token=${tokenId}`
       );
 
-      console.log(userData.data);
-
       if (userData.data.email_verified === "true") return true;
 
       return false;

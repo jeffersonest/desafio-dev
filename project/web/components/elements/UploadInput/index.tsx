@@ -1,12 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { FormEventHandler, useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import { useAuth } from "../../../contexts/auth.context";
+import uploadService from "../../../services/upload.service";
 
 const UploadInput: React.FC = () => {
   const [files, setFiles] = useState<any[]>([]);
+  const { user } = useAuth();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const file = e.target[0].files[0];
+    await uploadService.sendFile(file, user.idToken);
   };
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -20,7 +25,11 @@ const UploadInput: React.FC = () => {
   });
 
   return (
-    <form className="upload-form" onSubmit={(e) => handleSubmit(e)}>
+    <form
+      encType="multipart/form-data"
+      className="upload-form"
+      onSubmit={(e) => handleSubmit(e)}
+    >
       <div className={`files-list ${files.length > 0 ? "block" : "hidden"}`}>
         <ul>
           {files.map((file) => {
@@ -34,7 +43,7 @@ const UploadInput: React.FC = () => {
         </ul>
       </div>
       <div className="upload-field" {...getRootProps()}>
-        <input accept=".txt" {...getInputProps()} />
+        <input accept=".txt" {...getInputProps()} name="file" />
         {isDragActive ? (
           <p>Drop the file here ...</p>
         ) : (
